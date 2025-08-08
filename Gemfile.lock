@@ -433,7 +433,7 @@ GEM
       redis-client (>= 0.22.2)
     spring (4.4.0)
     stringio (3.1.7)
-    stripe (9.4.0)
+    stripe (15.4.0)
     thor (1.4.0)
     timeout (0.4.3)
     tzinfo (2.0.6)
@@ -516,7 +516,7 @@ DEPENDENCIES
   shoulda-matchers (~> 5.1)
   sidekiq (~> 7.0)
   spring
-  stripe (~> 9.0)
+  stripe (~> 15.4)
   vcr (~> 6.1)
   web-console (>= 4.1.0)
   webdrivers
