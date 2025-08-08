@@ -61,7 +61,7 @@ end
 
 group :development do
   gem "web-console", ">= 4.1.0"
-  gem "rack-mini-profiler", "~> 3.1"
+  gem "rack-mini-profiler", "~> 4.0"
   gem "listen", "~> 3.3"
   gem "spring"
   gem "letter_opener", "~> 1.8"
