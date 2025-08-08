@@ -11,7 +11,7 @@ gem "bootsnap", require: false
 
 # Authentication and Authorization
 gem "bcrypt", "~> 3.1.7"
-gem "jwt", "~> 2.7"
+gem "jwt", "~> 3.1"
 
 # API and Serialization
 gem "jbuilder", "~> 2.11"
