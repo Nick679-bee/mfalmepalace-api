@@ -41,7 +41,7 @@ gem "ransack", "~> 4.1"
 
 # Security and Rate Limiting
 gem "rack-attack", "~> 6.6"
-gem "brakeman", "~> 6.1"
+gem "brakeman", "~> 7.1"
 
 # Development and Testing
 group :development, :test do
