@@ -46,7 +46,7 @@ gem "brakeman", "~> 6.1"
 # Development and Testing
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
-  gem "rspec-rails", "~> 6.0"
+  gem "rspec-rails", "~> 8.0"
   gem "factory_bot_rails", "~> 6.4"
   gem "faker", "~> 3.2"
   gem "shoulda-matchers", "~> 5.1"
