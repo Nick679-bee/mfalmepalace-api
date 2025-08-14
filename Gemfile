@@ -14,7 +14,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "jwt", "~> 2.7"
 
 # API and Serialization
-gem "jbuilder", "~> 2.11"
+gem "jbuilder", "~> 2.14"
 gem "rack-cors"
 gem "jsonapi-serializer", "~> 2.2"
 
