@@ -19,7 +19,7 @@ gem "rack-cors"
 gem "jsonapi-serializer", "~> 2.2"
 
 # Background Jobs
-gem "sidekiq", "~> 7.0"
+gem "sidekiq", "~> 8.0"
 gem "redis", "~> 5.0"
 
 # Payment Processing
