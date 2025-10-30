@@ -23,7 +23,7 @@ gem "sidekiq", "~> 7.0"
 gem "redis", "~> 5.0"
 
 # Payment Processing
-gem "stripe", "~> 9.0"
+gem "stripe", "~> 17.1"
 
 # Email and Notifications
 gem "mailgun-ruby", "~> 1.2"
