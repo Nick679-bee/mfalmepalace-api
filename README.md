@@ -1,24 +1,43 @@
-# README
+# Mfalme Palace API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Deploy to Render (production callback URL)
 
-Things you may want to cover:
+This repo includes `render.yaml` for quick deployment.
 
-* Ruby version
+### 1) Push this backend to GitHub
+Render deploys from a Git repository.
 
-* System dependencies
+### 2) Create service in Render
+- In Render: **New +** -> **Blueprint**
+- Select this repository and deploy.
+- Render will create:
+  - Web service: `mfalme-palace-api`
+  - PostgreSQL database: `mfalme-palace-db`
 
-* Configuration
+### 3) Run database setup once deployed
+Use Render Shell for the web service:
+- `bundle exec rails db:migrate`
+- `bundle exec rails db:seed`
 
-* Database creation
+### 4) Set required env vars in Render
+Set these in the web service Environment tab:
+- `MPESA_BASE_URL` (`https://sandbox.safaricom.co.ke` or production URL)
+- `MPESA_CONSUMER_KEY`
+- `MPESA_CONSUMER_SECRET`
+- `MPESA_SHORTCODE`
+- `MPESA_PASSKEY`
+- `MPESA_CALLBACK_URL`
 
-* Database initialization
+Admin bootstrap (optional):
+- `ADMIN_EMAIL`
+- `ADMIN_PASSWORD`
+- `ADMIN_NAME`
+- `ADMIN_PHONE`
 
-* How to run the test suite
+### 5) Callback URL to register in Safaricom/Daraja
+Once deployed, your callback should be:
 
-* Services (job queues, cache servers, search engines, etc.)
+`https://<your-render-service>.onrender.com/payments/webhook/mpesa`
 
-* Deployment instructions
-
-* ...
+Example:
+`https://mfalme-palace-api.onrender.com/payments/webhook/mpesa`

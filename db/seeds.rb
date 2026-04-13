@@ -40,3 +40,20 @@ Property.find_or_create_by!(name: "Garden Suite") do |p|
 end
 
 puts "Created #{Property.count} properties"
+
+# Create/update an admin account from environment variables.
+# This keeps sensitive credentials out of version-controlled code.
+admin_email = ENV["ADMIN_EMAIL"]
+admin_password = ENV["ADMIN_PASSWORD"]
+
+if admin_email.present? && admin_password.present?
+  admin = User.find_or_initialize_by(email: admin_email)
+  admin.name = ENV["ADMIN_NAME"].presence || "Admin User"
+  admin.phone = ENV["ADMIN_PHONE"].presence || "+254700000000"
+  admin.role = "admin"
+  admin.password = admin_password
+  admin.save!
+  puts "Admin account ready for #{admin.email}"
+else
+  puts "Admin account not seeded (set ADMIN_EMAIL and ADMIN_PASSWORD)."
+end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :create, :show, :destroy]
 
   # Payments webhooks
+  post "/payments/mpesa/stk_push", to: "payments#mpesa_stk_push"
   post "/payments/webhook/:provider", to: "payments#webhook"
 
   # Admin

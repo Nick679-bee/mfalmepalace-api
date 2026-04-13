@@ -23,14 +23,16 @@ class PropertiesController < ApplicationController
       eco_friendly: p.eco_friendly,
       photos: p.photos_list.take(3),
       nightly_rate_cents: p.base_price_cents,
-      currency: "KES"
+      currency: "KSH"
     }
   end
 
   def serialize_property_detail(p)
     today = Date.current
     next_30 = (today..(today + 30.days))
-    blackout = p.price_overrides.blackout_dates.where(date: next_30).pluck(:date)
+    manual_blackout = p.price_overrides.blackout_dates.where(date: next_30).pluck(:date)
+    booked_blackout = booking_blackout_dates(p, next_30.first, next_30.last)
+    blackout = (manual_blackout + booked_blackout).uniq.sort
 
     {
       id: p.id,
@@ -44,11 +46,19 @@ class PropertiesController < ApplicationController
       pet_friendly: p.pet_friendly,
       eco_friendly: p.eco_friendly,
       nightly_rate_cents: p.base_price_cents,
-      currency: "KES",
+      currency: "KSH",
       availability: {
         blackout_dates: blackout
       }
     }
+  end
+
+  def booking_blackout_dates(property, from_date, to_date)
+    property.bookings.confirmed.where("check_in < ? AND check_out > ?", to_date + 1.day, from_date).flat_map do |booking|
+      start_date = [booking.check_in, from_date].max
+      end_date = [booking.check_out - 1.day, to_date].min
+      end_date >= start_date ? (start_date..end_date).to_a : []
+    end
   end
 end
 

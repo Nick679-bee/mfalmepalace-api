@@ -1,7 +1,7 @@
 class Payment < ApplicationRecord
   belongs_to :booking
   
-  validates :provider, presence: true, inclusion: { in: %w[stripe paypal paystack] }
+  validates :provider, presence: true, inclusion: { in: %w[stripe paypal paystack mpesa] }
   validates :provider_payment_id, presence: true, uniqueness: true
   validates :amount_cents, presence: true, numericality: { greater_than: 0 }
   validates :status, presence: true, inclusion: { in: %w[pending succeeded failed cancelled refunded] }

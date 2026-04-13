@@ -28,8 +28,8 @@ class Booking < ApplicationRecord
   
   before_validation :set_default_status, on: :create
   before_validation :calculate_price, on: :create
-  after_create :send_booking_confirmation_email
-  after_update :send_status_update_email, if: :saved_change_to_status?
+  # after_create :send_booking_confirmation_email  # Temporarily disabled
+  # after_update :send_status_update_email, if: :saved_change_to_status?  # Temporarily disabled
   
   def nights
     return 0 unless check_in && check_out
