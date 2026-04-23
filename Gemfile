@@ -53,7 +53,7 @@ group :development, :test do
   gem "database_cleaner-active_record", "~> 2.1"
   gem "vcr", "~> 6.1"
   gem "webmock", "~> 3.18"
-  gem "dotenv-rails", "~> 2.8"
+  gem "dotenv-rails", "~> 3.1"
   gem "rubocop", "~> 1.50"
   gem "rubocop-rails", "~> 2.20"
   gem "rubocop-rspec", "~> 2.20"
